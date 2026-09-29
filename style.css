@@ -1,0 +1,22 @@
+
+.navbar{
+    --navbar-text-color: #fafafa;
+    --navbar-text-hover-color: #fdfdfd;
+    background-color: rgb(0, 138, 138);
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link,
+.navbar .navbar-text {
+    color: var(--navbar-text-color);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+    color: var(--navbar-text-hover-color);
+}
+
+body {
+    background-color: rgb(69, 69, 248);
+}
