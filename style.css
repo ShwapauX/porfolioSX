@@ -1,22 +1,107 @@
+.navbar {
+    --section-accent: #42e6a4;
+    position: sticky;
+    top: 16px;
+    z-index: 1030;
+    width: fit-content;
+    max-width: calc(100% - 24px);
+    margin: 16px auto 0;
+    padding: 8px 14px;
+    border: 1px solid color-mix(in srgb, var(--section-accent) 55%, transparent);
+    border-radius: 999px;
+    background: rgba(24, 29, 31, 0.72);
+    box-shadow: 0 0 22px color-mix(in srgb, var(--section-accent) 22%, transparent),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: border-color 300ms ease, box-shadow 300ms ease;
+    padding: 15px;
+}
+.navbar .container-fluid {
+    justify-content: center;
+    gap: 12px;
+    color: var(--navbar-text-color);
+}
+.navbar .navbar-collapse {
+    flex-grow: 0;
+}
 
-.navbar{
-    --navbar-text-color: #fafafa;
-    --navbar-text-hover-color: #fdfdfd;
-    background-color: rgb(0, 138, 138);
+.navbar .navbar-nav {
+    gap: 4px;
 }
 
 .navbar .navbar-brand,
-.navbar .nav-link,
-.navbar .navbar-text {
-    color: var(--navbar-text-color);
+.navbar .nav-link {
+    color: #e9f3ef;
+}
+
+.navbar .nav-link {
+    padding: 8px 12px;
+    border-radius: 999px;
+    transition: color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
 }
 
 .navbar .nav-link:hover,
-.navbar .nav-link:focus,
+.navbar .nav-link:focus-visible {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
 .navbar .nav-link.active {
+    color: #fff;
+    background: color-mix(in srgb, var(--section-accent) 18%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--section-accent) 38%, transparent);
+}
+
+.navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.navbar .navbar-toggler-icon {
+    filter: invert(1);
     color: var(--navbar-text-hover-color);
 }
 
 body {
-    background-color: rgb(69, 69, 248);
+    background-color: rgb(30, 30, 34);
+    color: white;
+}
+
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+.portfolio-section {
+    --section-accent: #42e6a4;
+    min-height: 100vh;
+    padding: 100px max(24px, calc((100vw - 1100px) / 2));
+    scroll-margin-top: 90px;
+}
+
+.portfolio-section h1,
+.portfolio-section h2 {
+    margin: 0;
+}
+
+@media (max-width: 991.98px) {
+    .navbar {
+        width: calc(100% - 24px);
+        border-radius: 20px;
+    }
+
+    .navbar .container-fluid {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .navbar .navbar-collapse {
+        flex-basis: 100%;
+    }
+
+    .navbar .navbar-nav {
+        align-items: center;
+        padding-top: 8px;
+    }
 }
