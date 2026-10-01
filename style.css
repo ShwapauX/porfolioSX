@@ -1,3 +1,4 @@
+/* Fija la navegación y le da una forma de cápsula con acento dinámico. */
 .navbar {
     --section-accent: #42e6a4;
     position: sticky;
@@ -26,10 +27,30 @@
     flex-grow: 0;
 }
 
+/* Mantiene claros y redondeados el logotipo y los enlaces del navbar. */
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #e9f3ef;
+}
+
+.navbar .nav-link {
+    padding: 8px 12px;
+    border-radius: 999px;
+    transition: color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+}
+
+/* Destaca el enlace al pasar el cursor o al navegar con teclado. */
+.navbar .nav-link:hover,
+.navbar .nav-link:focus-visible {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
 .navbar .navbar-nav {
     gap: 4px;
 }
 
+/* Marca visualmente la sección actual con el color de acento. */
 .navbar .nav-link.active {
     color: #fff;
     background: color-mix(in srgb, var(--section-accent) 18%, transparent);
@@ -45,17 +66,20 @@
     color: var(--navbar-text-hover-color);
 }
 
+/* Colores generales de fondo y texto del sitio. */
 body {
     background-color: rgb(30, 30, 34);
     color: white;
 }
 
 
+/* Desplazamiento suave y separación para los enlaces de anclaje. */
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
 }
 
+/* Altura, márgenes y color de acento para cada sección. */
 .portfolio-section {
     --section-accent: #42e6a4;
     min-height: 100vh;
@@ -69,6 +93,7 @@ html {
 }
 
 @media (max-width: 991.98px) {
+    /* Ajustes para expandir y ordenar el navbar en pantallas pequeñas. */
     .navbar {
         width: calc(100% - 24px);
         border-radius: 20px;
@@ -88,26 +113,31 @@ html {
         padding-top: 8px;
     }
 }
+/* Presenta la foto de perfil como un retrato circular. */
 #perfil{
     border-radius: 50%;
     width: 250px;
 }
+/* Alinea el texto biográfico para facilitar su lectura. */
 #sobremi{
     text-align: justify;
 
 }
 
+/* Fondo, espaciado y alineación del pie de página. */
 footer{
     padding: 15px;
     background-color: #42e6a4;
     text-align: center;
     color: black;
 }
-/* card */
+/* Diseño y comportamiento visual de las tarjetas de proyectos. */
 /* From Uiverse.io by alexruix */ 
+/* Centra las tarjetas dentro de la galería de proyectos. */
 #contProyect{
     align-items: center;
 }
+/* Distribuye las tarjetas en fila y define la separación entre ellas. */
 .cards {
     display: flex;
     gap: 15px;
@@ -131,6 +161,7 @@ footer{
     background-color: #454746;
 }
 
+/* Define dimensiones, contenido y transición de cada tarjeta. */
 .cards .card {
     display: flex;
     align-items: center;
@@ -154,6 +185,7 @@ footer{
     font-size: .7em;
 }
 
+/* Enfatiza la tarjeta bajo el cursor y desenfoca las demás. */
 .cards .card:hover {
     transform: scale(1.1, 1.1);
 }
