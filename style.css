@@ -30,23 +30,6 @@
     gap: 4px;
 }
 
-.navbar .navbar-brand,
-.navbar .nav-link {
-    color: #e9f3ef;
-}
-
-.navbar .nav-link {
-    padding: 8px 12px;
-    border-radius: 999px;
-    transition: color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
-}
-
-.navbar .nav-link:hover,
-.navbar .nav-link:focus-visible {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.08);
-}
-
 .navbar .nav-link.active {
     color: #fff;
     background: color-mix(in srgb, var(--section-accent) 18%, transparent);
@@ -119,4 +102,132 @@ footer{
     background-color: #42e6a4;
     text-align: center;
     color: black;
+}
+/* card */
+/* From Uiverse.io by alexruix */ 
+#contProyect{
+    align-items: center;
+}
+.cards {
+    display: flex;
+    gap: 15px;
+}
+
+.cards .red {
+    background-color: #f43f5e;
+}
+
+.cards .blue {
+    background-color: #3b82f6;
+}
+
+.cards .green {
+    background-color: #22c55e;
+}
+.cards .yellow {
+    background-color: #bac522;
+}
+.cards .gray {
+    background-color: #454746;
+}
+
+.cards .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 500px;
+    width: 350px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.cards .card p.tip {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.cards .card p.second-text {
+    font-size: .7em;
+}
+
+.cards .card:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+}
+/* Estilos de la lista de enlaces sociales y contacto del footer. */
+ul {
+    list-style: none;
+}
+
+/* Distribuye y centra los iconos en una fila. */
+.example-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.example-2 .icon-content {
+    margin: 0 10px;
+    position: relative;
+}
+
+/* Define el tamaño, forma y alineación de cada botón con icono. */
+.example-2 .icon-content a {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #4d4d4d;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+.example-2 .icon-content a:hover {
+    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+}
+.example-2 .icon-content a svg {
+    position: relative;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+}
+.example-2 .icon-content a:hover {
+    color: white;
+}
+.example-2 .icon-content a .filled {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #000;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Anima el relleno de color del botón al pasar el cursor. */
+.example-2 .icon-content a:hover .filled {
+    height: 100%;
+}
+
+/* Asigna el color de interacción de cada red o contacto. */
+.example-2 .icon-content a[data-social="linkedin"] .filled {
+    background-color: #0274b3;
+}
+
+.example-2 .icon-content a[data-social="github"] .filled {
+    background-color: #24262a;
+}
+.example-2 .icon-content a[data-social="email"] .filled {
+    background-color: #d12020;
 }
