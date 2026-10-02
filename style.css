@@ -136,6 +136,15 @@ footer{
     text-align: center;
     color: black;
 }
+/* seccion de exeriencia */
+.espace{
+    background-color: #d63a3a;
+}
+.fspace{
+    background-color: #bac522;
+}
+
+
 /* seccion de tecnologias */
 .iconSkll{
     max-width: 58px;
