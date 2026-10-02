@@ -87,6 +87,11 @@ html {
     scroll-margin-top: 90px;
 }
 
+#tecnologias {
+    min-height: auto;
+    padding-bottom: 48px;
+}
+
 .portfolio-section h1,
 .portfolio-section h2 {
     margin: 0;
@@ -133,10 +138,35 @@ footer{
 }
 /* seccion de tecnologias */
 .iconSkll{
-    max-width: 80px;
-    max-height: 80px;
-
+    max-width: 58px;
+    max-height: 58px;
 }
+.cardiconSkll {
+    display: flex;
+    flex: 0 0 90px;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 30px;
+    background: #f0f0f0;
+    box-shadow: 10px 10px 30px #ffffff9f,-10px -10px 30px #42e6a49f;
+    transition: transform 200ms ease;
+}
+
+.cardiconSkll:hover {
+    transform: scale(1.06);
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    margin: 20px 0 36px;
+}
+
+
 /* Diseño y comportamiento visual de las tarjetas de proyectos. */
 /* From Uiverse.io by alexruix */ 
 /* Mantiene espacio para el efecto hover alrededor de las tarjetas. */
@@ -146,7 +176,7 @@ footer{
     padding: 24px;
 }
 
-/* Recorta el carril y mantiene dos tarjetas visibles en todos los tamaños. */
+/* Recorta el carril para que solo se vean las tarjetas previstas por breakpoint. */
 .project-carousel-viewport {
     overflow: hidden;
 }
@@ -265,6 +295,10 @@ footer{
 
     .cards {
         padding-inline: 22px;
+    }
+
+    .cards > .card {
+        flex-basis: 100%;
     }
 }
 /* Estilos de la lista de enlaces sociales y contacto del footer. */
