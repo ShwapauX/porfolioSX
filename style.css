@@ -131,6 +131,12 @@ footer{
     text-align: center;
     color: black;
 }
+/* seccion de tecnologias */
+.iconSkll{
+    max-width: 80px;
+    max-height: 80px;
+
+}
 /* Diseño y comportamiento visual de las tarjetas de proyectos. */
 /* From Uiverse.io by alexruix */ 
 /* Mantiene espacio para el efecto hover alrededor de las tarjetas. */
@@ -293,6 +299,7 @@ ul {
 }
 .example-2 .icon-content a:hover {
     box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+        color: white;
 }
 .example-2 .icon-content a svg {
     position: relative;
@@ -300,9 +307,7 @@ ul {
     width: 30px;
     height: 30px;
 }
-.example-2 .icon-content a:hover {
-    color: white;
-}
+
 .example-2 .icon-content a .filled {
     position: absolute;
     top: auto;
@@ -328,5 +333,5 @@ ul {
     background-color: #24262a;
 }
 .example-2 .icon-content a[data-social="email"] .filled {
-    background-color: #d12020;
+    background-color: #d63a3a;
 }
