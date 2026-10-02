@@ -79,10 +79,9 @@ html {
     scroll-padding-top: 100px;
 }
 
-/* Altura, márgenes y color de acento para cada sección. */
+/* Espaciado y color de acento para cada sección, cuya altura depende del contenido. */
 .portfolio-section {
     --section-accent: #42e6a4;
-    min-height: 100vh;
     padding: 100px max(24px, calc((100vw - 1100px) / 2));
     scroll-margin-top: 90px;
 }
@@ -120,8 +119,11 @@ html {
 }
 /* Presenta la foto de perfil como un retrato circular. */
 #perfil{
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
     border-radius: 50%;
-    width: 250px;
 }
 /* Alinea el texto biográfico para facilitar su lectura. */
 #sobremi{
@@ -138,10 +140,10 @@ footer{
 }
 /* seccion de exeriencia */
 .espace{
-    background-color: #d63a3a;
+    background-color: #9232af;
 }
 .fspace{
-    background-color: #bac522;
+    background-color: #2bca60;
 }
 
 
