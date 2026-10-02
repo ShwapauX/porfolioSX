@@ -33,3 +33,60 @@ const sectionObserver = new IntersectionObserver((entries) => {
 
 // Registra cada sección para reaccionar al desplazamiento de la página.
 sections.forEach((section) => sectionObserver.observe(section));
+
+// Reordena las tarjetas al avanzar o retroceder para mantener el carrusel en ciclo.
+const projectTrack = document.querySelector(".cards-track");
+const projectCarouselControls = document.querySelectorAll("[data-carousel-direction]");
+let isProjectCarouselMoving = false;
+
+projectCarouselControls.forEach((button) => {
+	button.addEventListener("click", () => {
+		if (isProjectCarouselMoving || !projectTrack) return;
+
+		const direction = Number(button.dataset.carouselDirection);
+		const cards = projectTrack.querySelectorAll(".card");
+		const firstCard = cards[0];
+		const lastCard = cards[cards.length - 1];
+		const gap = parseFloat(getComputedStyle(projectTrack).gap);
+		const distance = firstCard.getBoundingClientRect().width + gap;
+		isProjectCarouselMoving = true;
+		let hasFinished = false;
+		let fallbackTimer;
+
+		const finishMove = () => {
+			if (hasFinished) return;
+			hasFinished = true;
+
+			if (direction > 0) {
+				projectTrack.append(firstCard);
+			}
+
+			projectTrack.style.transition = "none";
+			projectTrack.style.transform = "translateX(0)";
+			projectTrack.offsetWidth;
+			projectTrack.style.transition = "";
+			isProjectCarouselMoving = false;
+			clearTimeout(fallbackTimer);
+		};
+
+		if (direction < 0) {
+			projectTrack.style.transition = "none";
+			projectTrack.prepend(lastCard);
+			projectTrack.style.transform = `translateX(-${distance}px)`;
+			projectTrack.offsetWidth;
+		}
+
+		projectTrack.style.transition = "";
+		projectTrack.style.transform = direction > 0
+			? `translateX(-${distance}px)`
+			: "translateX(0)";
+
+		projectTrack.addEventListener("transitionend", function onTransitionEnd(event) {
+			if (event.target !== projectTrack || event.propertyName !== "transform") return;
+			projectTrack.removeEventListener("transitionend", onTransitionEnd);
+			finishMove();
+		});
+
+		fallbackTimer = setTimeout(finishMove, 450);
+	});
+});

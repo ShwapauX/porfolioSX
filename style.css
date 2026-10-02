@@ -133,14 +133,43 @@ footer{
 }
 /* Diseño y comportamiento visual de las tarjetas de proyectos. */
 /* From Uiverse.io by alexruix */ 
-/* Centra las tarjetas dentro de la galería de proyectos. */
-#contProyect{
-    align-items: center;
+/* Mantiene espacio para el efecto hover alrededor de las tarjetas. */
+.project-carousel {
+    width: min(100%, 1100px);
+    margin-inline: auto;
+    padding: 24px;
 }
-/* Distribuye las tarjetas en fila y define la separación entre ellas. */
+
+/* Recorta el carril y mantiene dos tarjetas visibles en todos los tamaños. */
+.project-carousel-viewport {
+    overflow: hidden;
+}
+
 .cards {
+    position: relative;
     display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: 15px;
+    width: 100%;
+    padding: 32px;
+    transition: transform 400ms ease;
+    will-change: transform;
+}
+
+.cards::after {
+    position: absolute;
+    top: 32px;
+    right: 0;
+    bottom: 32px;
+    width: 18px;
+    background: rgb(30, 30, 34);
+    content: "";
+    pointer-events: none;
+}
+
+.cards > .card {
+    flex: 0 0 calc(50% - 7.5px);
 }
 
 .cards .red {
@@ -169,7 +198,7 @@ footer{
     flex-direction: column;
     text-align: center;
     height: 500px;
-    width: 350px;
+    width: 100%;
     border-radius: 10px;
     color: white;
     cursor: pointer;
@@ -187,12 +216,50 @@ footer{
 
 /* Enfatiza la tarjeta bajo el cursor y desenfoca las demás. */
 .cards .card:hover {
+    position: relative;
+    z-index: 1;
     transform: scale(1.1, 1.1);
 }
 
 .cards:hover > .card:not(:hover) {
     filter: blur(10px);
     transform: scale(0.9, 0.9);
+}
+
+.project-carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.project-carousel-control {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    background: rgba(24, 29, 31, 0.8);
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.project-carousel-control:hover,
+.project-carousel-control:focus-visible {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.08);
+}
+
+@media (max-width: 575.98px) {
+    .project-carousel {
+        padding-inline: 18px;
+    }
+
+    .cards {
+        padding-inline: 22px;
+    }
 }
 /* Estilos de la lista de enlaces sociales y contacto del footer. */
 ul {
