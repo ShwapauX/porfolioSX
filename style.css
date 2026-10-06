@@ -57,6 +57,14 @@
     box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--section-accent) 38%, transparent);
 }
 
+/* Resalta Contacto como llamada a la acción sin salir del estilo del navbar. */
+.navbar .nav-link.nav-contact.active {
+    color: #fff;
+    background: color-mix(in srgb, var(--section-accent) 22%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--section-accent) 55%, transparent);
+    font-weight: 600;
+}
+
 .navbar .navbar-toggler {
     border-color: rgba(255, 255, 255, 0.28);
 }
@@ -145,48 +153,45 @@ footer{
 .fspace{
     background-color: #2bca60;
 }
-/* time line */
-/* ============ PERSONALIZA AQUÍ ============ */
+/* time line de experiencia */
 :root {
   --star-color: #111111;   /* color de las estrellas */
   --line-color: #111111;   /* color de la línea */
   --line-width: 2px;       /* grosor de la línea */
   --star-size: 34px;       /* tamaño de la estrella */
-  --star-top: 0px;         /* baja la estrella para alinearla con tu card */
-  --row-gap: 0px;          /* separación vertical entre .row (margin/gutter) para que la línea no se corte */
 }
-/* ========================================= */
-.fspace {
+#experiencia .fspace {
     position: relative;
 }
 
 /* Estrella de cuatro puntas, centrada en la columna */
-.fspace::before {
+#experiencia .fspace::before {
     content: "";
     position: absolute;
-    top: var(--star-top);
+    top: 50%;
     left: 50%;
     width: var(--star-size);
     height: var(--star-size);
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     background: var(--star-color);
-    z-index: 1;
+    z-index: 2;
     clip-path: polygon(100.0% 50.0%, 98.9% 49.7%, 95.7% 48.5%, 90.7% 45.9%, 84.4% 41.8%, 77.4% 36.2%, 70.3% 29.7%, 63.8% 22.6%, 58.2% 15.6%, 54.1% 9.3%, 51.5% 4.3%, 50.3% 1.1%, 50.0% 0.0%, 49.7% 1.1%, 48.5% 4.3%, 45.9% 9.3%, 41.8% 15.6%, 36.2% 22.6%, 29.7% 29.7%, 22.6% 36.2%, 15.6% 41.8%, 9.3% 45.9%, 4.3% 48.5%, 1.1% 49.7%, 0.0% 50.0%, 1.1% 50.3%, 4.3% 51.5%, 9.3% 54.1%, 15.6% 58.2%, 22.6% 63.8%, 29.7% 70.3%, 36.2% 77.4%, 41.8% 84.4%, 45.9% 90.7%, 48.5% 95.7%, 49.7% 98.9%, 50.0% 100.0%, 50.3% 98.9%, 51.5% 95.7%, 54.1% 90.7%, 58.2% 84.4%, 63.8% 77.4%, 70.3% 70.3%, 77.4% 63.8%, 84.4% 58.2%, 90.7% 54.1%, 95.7% 51.5%, 98.9% 50.3%);
 }
 
-/* Línea que baja desde la estrella hasta la siguiente fila */
-.fspace::after {
+/* Une el borde inferior de una estrella con el borde superior de la siguiente. */
+#experiencia .fspace::after {
     content: "";
     position: absolute;
-    top: calc(var(--star-top) + var(--star-size) / 2);
-    bottom: calc(var(--row-gap) * -1);
+    top: calc(50% + var(--star-size) / 2);
+    bottom: calc(-50% + var(--star-size) / 2);
     left: 50%;
     width: var(--line-width);
     transform: translateX(-50%);
     background: var(--line-color);
+    z-index: 1;
 }
 /* La última fila no lleva línea hacia abajo */
-.row:last-of-type > .fspace::after {
+#experiencia > .row:last-of-type > .fspace::after {
     display: none;
 }
 /* cardExp */
@@ -513,7 +518,7 @@ footer{
 
 .form-container .form .button-container .send-button {
     flex-basis: 70%;
-    background: #ff7a01;
+    background: #ffffff;
     padding: 10px;
     color: #001925;
     text-align: center;
@@ -523,13 +528,12 @@ footer{
 }
 
 .form-container .form .button-container .send-button:hover {
-    background: transparent;
-    border: 1px solid #ff7a01;
-    color: #ff7a01;
+    background: rgb(30, 30, 34);
+    color: rgb(255, 255, 255);
 }
 
 .form-container .form .button-container .reset-button-container {
-    filter: drop-shadow(1px 1px 0px #ff7a01);
+    filter: drop-shadow(2px 2px 0px #ffffff);
     flex-basis: 30%;
 }
 
@@ -537,16 +541,16 @@ footer{
     position: relative;
     text-align: center;
     padding: 10px;
-    color: #ff7a01;
+    color: #42e6a4;
     font-weight: bold;
-    background: #001925;
+    background: rgb(30, 30, 34);
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
     transition: all 0.2s ease-in-out;
 }
 
 .form-container .form .button-container .reset-button-container .reset-button:hover {
-    background: #ff7a01;
-    color: #001925;
+    background: #d63f3f;
+    color: #070707;
 }
 
 
