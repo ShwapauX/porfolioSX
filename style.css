@@ -378,60 +378,119 @@ footer{
     pointer-events: none;
 }
 
-.cards > .card {
+.cards-track > .project-card {
     flex: 0 0 calc(50% - 7.5px);
-}
-
-.cards .red {
-    background-color: #f43f5e;
-}
-
-.cards .blue {
-    background-color: #3b82f6;
-}
-
-.cards .green {
-    background-color: #22c55e;
-}
-.cards .yellow {
-    background-color: #bac522;
-}
-.cards .gray {
-    background-color: #454746;
-}
-
-/* Define dimensiones, contenido y transición de cada tarjeta. */
-.cards .card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
+    min-width: 0;
     height: 500px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background: #e0e0e0;
+    transition: transform 400ms ease, box-shadow 400ms ease, filter 400ms ease;
+}
+
+.project-card .card__img {
+    flex: 1 1 50%;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+}
+
+.project-card .card__img img {
+    display: block;
     width: 100%;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    transition: 400ms;
+    height: 100%;
+    object-fit: cover;
 }
 
-.cards .card p.tip {
-    font-size: 1em;
-    font-weight: 700;
+.project-card .card__descr-wrapper {
+    flex: 1 1 50%;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 15px;
+    color: #20282d;
+    border-radius: 0 0 20px 20px;
 }
 
-.cards .card p.second-text {
-    font-size: .7em;
+.project-card--boupetique .card__descr-wrapper {
+    background: #42e6a4;
 }
 
-/* Enfatiza la tarjeta bajo el cursor y desenfoca las demás. */
-.cards .card:hover {
+.project-card--gryffindor .card__descr-wrapper {
+    background: #f0c674;
+}
+
+.project-card--calculator .card__descr-wrapper {
+    background: #f28c8c;
+}
+
+.project-card--contacts .card__descr-wrapper {
+    background: #62d9d0;
+}
+
+.project-card--in-progress .card__descr-wrapper {
+    background: #c3a6ff;
+}
+
+.project-card .card__title {
+    margin: 0 0 12px;
+    color: inherit;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.project-card .card__descr {
+    margin: 0;
+    overflow: auto;
+    color: inherit;
+}
+
+.project-card .card__links {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.project-card .card__links .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: inherit;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.project-icon-definitions {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.project-card .card__links .svg {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    fill: currentColor;
+}
+
+.project-card .card__links .link:hover,
+.project-card .card__links .link:focus-visible {
+    text-decoration: underline;
+}
+
+/* Enfatiza la tarjeta bajo el cursor y mantiene el desenfoque del carrusel. */
+.cards-track > .project-card:hover {
     position: relative;
     z-index: 1;
-    transform: scale(1.1, 1.1);
+    transform: scale(1.02);
 }
 
-.cards:hover > .card:not(:hover) {
+.cards-track:hover > .project-card:not(:hover) {
     filter: blur(10px);
     transform: scale(0.9, 0.9);
 }
@@ -471,7 +530,7 @@ footer{
         padding-inline: 22px;
     }
 
-    .cards > .card {
+    .cards-track > .project-card {
         flex-basis: 100%;
     }
 }

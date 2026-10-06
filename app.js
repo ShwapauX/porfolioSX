@@ -3,20 +3,23 @@ const sections = document.querySelectorAll(".portfolio-section");
 const navLinks = document.querySelectorAll(".navbar .nav-link");
 const navbar = document.querySelector(".navbar");
 
-// Observa qué sección está visible para actualizar el estado del navbar.
-const sectionObserver = new IntersectionObserver((entries) => {
-	// Selecciona la sección visible que ocupa mayor parte de la pantalla.
-	const visibleSections = entries
-		.filter((entry) => entry.isIntersecting)
-		.sort((first, second) => second.intersectionRatio - first.intersectionRatio);
+// Marca la sección que cruza el punto de referencia bajo la navegación.
+const updateActiveSection = () => {
+	const activationPoint = window.innerHeight * 0.35;
+	let currentSection = sections[0];
 
-	if (visibleSections.length === 0) return;
+	sections.forEach((section) => {
+		if (section.getBoundingClientRect().top <= activationPoint) {
+			currentSection = section;
+		}
+	});
 
-	// Adapta el color de acento de la barra a la sección actual.
-	const currentSection = visibleSections[0].target;
+	if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1) {
+		currentSection = sections[sections.length - 1];
+	}
+
 	navbar.style.setProperty("--section-accent", currentSection.dataset.accent);
 
-	// Marca el enlace correspondiente y actualiza su estado accesible.
 	navLinks.forEach((link) => {
 		const isCurrent = link.hash === `#${currentSection.id}`;
 		link.classList.toggle("active", isCurrent);
@@ -27,12 +30,21 @@ const sectionObserver = new IntersectionObserver((entries) => {
 			link.removeAttribute("aria-current");
 		}
 	});
-}, {
-	threshold: [0.2, 0.4, 0.6],
-});
+};
 
-// Registra cada sección para reaccionar al desplazamiento de la página.
-sections.forEach((section) => sectionObserver.observe(section));
+let navigationUpdateScheduled = false;
+const scheduleActiveSectionUpdate = () => {
+	if (navigationUpdateScheduled) return;
+	navigationUpdateScheduled = true;
+	requestAnimationFrame(() => {
+		navigationUpdateScheduled = false;
+		updateActiveSection();
+	});
+};
+
+window.addEventListener("scroll", scheduleActiveSectionUpdate, { passive: true });
+window.addEventListener("resize", scheduleActiveSectionUpdate);
+updateActiveSection();
 
 // Reordena las tarjetas al avanzar o retroceder para mantener el carrusel en ciclo.
 const projectTrack = document.querySelector(".cards-track");
@@ -44,7 +56,7 @@ projectCarouselControls.forEach((button) => {
 		if (isProjectCarouselMoving || !projectTrack) return;
 
 		const direction = Number(button.dataset.carouselDirection);
-		const cards = projectTrack.querySelectorAll(".card");
+		const cards = projectTrack.querySelectorAll(".project-card");
 		const firstCard = cards[0];
 		const lastCard = cards[cards.length - 1];
 		const gap = parseFloat(getComputedStyle(projectTrack).gap);
