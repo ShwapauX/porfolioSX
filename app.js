@@ -46,6 +46,44 @@ window.addEventListener("scroll", scheduleActiveSectionUpdate, { passive: true }
 window.addEventListener("resize", scheduleActiveSectionUpdate);
 updateActiveSection();
 
+// Escribe y borra el mensaje completo sin impedir que se ajuste en varias líneas.
+const typingText = document.querySelector(".terminal-loader .text");
+if (typingText) {
+	const fullMessage = typingText.textContent.trim();
+	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+	typingText.setAttribute("aria-label", fullMessage);
+	if (prefersReducedMotion) {
+		typingText.textContent = fullMessage;
+	} else {
+		const characters = Array.from(fullMessage);
+		let characterIndex = 0;
+		let isDeleting = false;
+
+		const animateTyping = () => {
+			characterIndex += isDeleting ? -1 : 1;
+			typingText.textContent = characters.slice(0, characterIndex).join("");
+
+			if (characterIndex === characters.length) {
+				isDeleting = true;
+				setTimeout(animateTyping, 1400);
+				return;
+			}
+
+			if (characterIndex === 0) {
+				isDeleting = false;
+				setTimeout(animateTyping, 500);
+				return;
+			}
+
+			setTimeout(animateTyping, isDeleting ? 35 : 70);
+		};
+
+		typingText.textContent = "";
+		animateTyping();
+	}
+}
+
 // Reordena las tarjetas al avanzar o retroceder para mantener el carrusel en ciclo.
 const projectTrack = document.querySelector(".cards-track");
 const projectCarouselControls = document.querySelectorAll("[data-carousel-direction]");
