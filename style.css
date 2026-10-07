@@ -78,11 +78,16 @@
 body {
     background-color: rgb(30, 30, 34);
     color: rgb(255, 255, 255);
+    font-family: "Cascadia Code", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 
 /* Desplazamiento suave y separación para los enlaces de anclaje. */
 html {
+    font-size: 0.9rem;
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
 }
@@ -310,7 +315,7 @@ footer{
 
 .contentExp .headingExp {
     font-weight: 700;
-    font-size: clamp(1.5rem, 5vw, 2.25rem);
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
     line-height: 1.3;
     margin: 0;
     z-index: 1;
@@ -320,7 +325,7 @@ footer{
 .contentExp .paraExp {
     z-index: 1;
     opacity: 0.8;
-    font-size: clamp(1rem, 3vw, 1.125rem);
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
     margin: 0;
     transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
     text-align: justify;
@@ -338,12 +343,12 @@ footer{
     }
 
     .contentExp .headingExp {
-        font-size: clamp(1.05rem, 4.5vw, 1.3rem);
+        font-size: clamp(1.05rem, 2.25vw, 1.3rem);
         overflow-wrap: anywhere;
     }
 
     .contentExp .paraExp {
-        font-size: clamp(0.875rem, 3.8vw, 1rem);
+        font-size: clamp(0.875rem, 1.9vw, 1rem);
         line-height: 1.5;
         text-align: left;
         overflow-wrap: anywhere;
@@ -690,40 +695,20 @@ footer{
 }
 
 .form-container .form .button-container .send-button {
-    flex-basis: 70%;
+    flex-basis: 100%;
     background: #ffffff;
     padding: 10px;
     color: #001925;
     text-align: center;
     font-weight: bold;
     border: 1px solid transparent;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
     transition: all 0.2s ease-in-out;
 }
 
 .form-container .form .button-container .send-button:hover {
     background: rgb(30, 30, 34);
     color: rgb(255, 255, 255);
-}
-
-.form-container .form .button-container .reset-button-container {
-    filter: drop-shadow(2px 2px 0px #ffffff);
-    flex-basis: 30%;
-}
-
-.form-container .form .button-container .reset-button-container .reset-button {
-    position: relative;
-    text-align: center;
-    padding: 10px;
-    color: #42e6a4;
-    font-weight: bold;
-    background: rgb(30, 30, 34);
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
-    transition: all 0.2s ease-in-out;
-}
-
-.form-container .form .button-container .reset-button-container .reset-button:hover {
-    background: #d63f3f;
-    color: #070707;
 }
 
 
