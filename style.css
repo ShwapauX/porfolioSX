@@ -208,6 +208,7 @@ footer{
     font-size: 14px;
     color: #050505;
     line-height: 1.4;
+    text-align:justify;
 }
 
 .cardPhoto:hover svg {
@@ -609,6 +610,7 @@ footer{
     margin: 0;
     overflow: auto;
     color: inherit;
+    text-align: justify;
 }
 
 .project-card .card__links {
